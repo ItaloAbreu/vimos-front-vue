@@ -9,16 +9,31 @@
 </template>
 
 <style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 #app {
+  display: flex;
+  flex-direction: column;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: #141414;
+
+  min-height: 100vh;
 }
 
 #nav {
+  width: 100%;
+  height: 60px;
   padding: 30px;
+  color: #fafafa;
+  background-color: #333;
 }
 
 #nav a {
@@ -27,6 +42,6 @@
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #a794d4;
 }
 </style>
