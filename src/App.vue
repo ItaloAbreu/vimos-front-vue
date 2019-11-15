@@ -1,10 +1,14 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
+    <nav class="nav justify-content">
+      <router-link to="/">Home</router-link>
+    </nav>
+    <section class="content">
+      <router-view/>
+    </section>
+    <footer class="nav justify-content">
       <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    </footer>
   </div>
 </template>
 
@@ -15,6 +19,12 @@
   padding: 0;
 }
 
+.justify-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #app {
   display: flex;
   flex-direction: column;
@@ -22,13 +32,17 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #917fb9;
   background-color: #141414;
 
   min-height: 100vh;
 }
 
-#nav {
+.content {
+  min-height: calc(100vh - 120px);
+}
+
+.nav {
   width: 100%;
   height: 60px;
   padding: 30px;
@@ -36,12 +50,13 @@
   background-color: #333;
 }
 
-#nav a {
+.nav a {
+  text-decoration: none;
   font-weight: bold;
-  color: #2c3e50;
+  color: #917fb9;
 }
 
-#nav a.router-link-exact-active {
+.nav a.router-link-exact-active {
   color: #a794d4;
 }
 </style>

@@ -1,15 +1,19 @@
 <template>
   <section>
-    <h1>{{ title }}</h1>
-    <CardVideo
-      v-for="video in videosList"
-      :key="video.key"
-      :id="video.id"
-      :thumbnail="video.thumbnail"
-      :createdAt="video.createdAt"
-      :title="video.title"
-      :baseURL="baseURL"
-    ></CardVideo>
+    <h1 class="title">{{ title }}</h1>
+  <v-container>
+    <v-row class="justify-content">
+      <CardVideo
+        v-for="video in videosList"
+        :key="video.key"
+        :id="video.id"
+        :thumbnail="video.thumbnail"
+        :createdAt="video.createdAt"
+        :title="video.title"
+        :baseURL="baseURL"
+      ></CardVideo>
+    </v-row>
+  </v-container>
   </section>
 </template>
 
@@ -50,3 +54,10 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.title {
+  margin: 25px 0 5px;
+}
+
+</style>
