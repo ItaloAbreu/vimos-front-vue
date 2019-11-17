@@ -1,6 +1,6 @@
 <template>
   <section class="card-video">
-    <router-link :to="`/video/?v=${id}`"
+    <router-link :to="`/video/${id}`"
     :title="title">
       <img :src="urlThumbnail" alt="thumbnail" />
       <p>{{ tratedCreatedAt }}</p>

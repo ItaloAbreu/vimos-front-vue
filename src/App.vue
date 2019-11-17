@@ -25,6 +25,10 @@
   align-items: center;
 }
 
+.direction-column {
+  flex-direction: column;
+}
+
 #app {
   display: flex;
   flex-direction: column;
