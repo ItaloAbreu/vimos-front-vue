@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="container-content">
     <h1 class="title">{{ title }}</h1>
   <v-container>
     <v-row class="justify-content">
@@ -10,7 +10,7 @@
         :thumbnail="video.thumbnail"
         :createdAt="video.createdAt"
         :title="video.title"
-        :baseURL="baseURL"
+        :description="video.description"
       ></CardVideo>
     </v-row>
   </v-container>
@@ -20,18 +20,16 @@
 <script>
 import CardVideo from "../components/CardVideo";
 import api from "../services/api";
-import { baseURL } from "../services/api"
 
 export default {
-  name: "home",
+  name: "container-home",
   components: {
-    CardVideo
+    CardVideo,
   },
   data() {
     return {
       title: 'Animes Da Hora!',
       videosList: [],
-      baseURL,
     }
   },
   async mounted() {
@@ -48,6 +46,7 @@ export default {
           thumbnail: video.thumbnail,
           createdAt: video.createdAt,
           title: video.title,
+          description: video.description,
         }
       ));
     },

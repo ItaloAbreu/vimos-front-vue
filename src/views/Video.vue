@@ -1,5 +1,5 @@
 <template>
-  <section class="justify-content direction-column">
+  <section class="container-content">
     <video-player
       v-if="videoOptions"
       :options="videoOptions"
