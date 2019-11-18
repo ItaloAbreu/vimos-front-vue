@@ -1,6 +1,6 @@
 <template>
-  <section class="container-content">
-    <h1 class="title">{{ title }}</h1>
+  <v-container class="container-content">
+    <h1>{{ title }}</h1>
   <v-container>
     <v-row class="justify-content">
       <CardVideo
@@ -14,7 +14,7 @@
       ></CardVideo>
     </v-row>
   </v-container>
-  </section>
+  </v-container>
 </template>
 
 <script>
@@ -55,8 +55,4 @@ export default {
 </script>
 
 <style scoped>
-.title {
-  margin: 25px 0 5px;
-}
-
 </style>

@@ -1,7 +1,7 @@
 <template>
   <v-app id="app">
     <v-navigation-drawer v-model="drawer" app clipped >
-      <v-list dense>
+      <v-list>
 
         <router-link class="clean-link" to="/">
           <v-list-item link>
@@ -10,6 +10,17 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>Home</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </router-link>
+
+        <router-link class="clean-link" to="/upload">
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon>mdi-upload</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Upload</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </router-link>
