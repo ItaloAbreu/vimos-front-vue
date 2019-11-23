@@ -33,7 +33,8 @@ export default {
     }
   },
   async mounted() {
-    this.videosList = await this.getVideosList();
+    const response = await this.getVideosList();
+    this.videosList = response.reverse();
   },
   methods: {
     async getVideosList() {
