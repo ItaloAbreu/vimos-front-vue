@@ -48,7 +48,7 @@
       <v-spacer />
       <v-row
         align="center"
-        style="max-width: 560px"
+        style="max-width: 260px; "
       >
         <v-text-field
           :append-icon-cb="() => {}"
@@ -94,6 +94,13 @@
 
 .justify-content {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.justify-column {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
