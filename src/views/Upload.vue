@@ -1,5 +1,16 @@
 <template>
   <section class="container-content justify-content">
+    <v-overlay v-model="loadVisibility">
+      <v-progress-circular
+        :rotate="-90"
+        :size="100"
+        :width="15"
+        :value="uploadProgress"
+        color="primary"
+      >
+        {{ uploadProgress }}
+      </v-progress-circular>
+    </v-overlay>
     <v-card max-width="400px" min-width="200px">
       <v-card-title class="grey darken-1">Upload de Vídeo</v-card-title>
       <form
@@ -10,7 +21,7 @@
         enctype="multipart/form-data"
       >
         <v-col cols="12">
-          <v-flex class="container-dropzone">
+          <v-flex :class="`container-dropzone ${arquivoAtual? 'container-dropzone-selected':''}`">
             <section class="dropzone">
               <div v-if="!arquivoAtual" class="justify-column">
                 <v-icon x-large>mdi-cloud-upload</v-icon>
@@ -50,6 +61,7 @@
 
 <script>
 import api from '@/services/api';
+import router from '@/router';
 
 export default {
   name: "Upload",
@@ -58,7 +70,9 @@ export default {
       title: "",
       description: "",
       arquivoAtual: null,
-      agree: false
+      agree: false,
+      uploadProgress: 0,
+      loadVisibility: false,
     };
   },
   methods: {
@@ -67,15 +81,24 @@ export default {
 
       const form = event.target;
       const data = new FormData(form);
+      this.loadVisibility = true;
 
       const config = {
+        onUploadProgress: progressEvent => {
+          this.uploadProgress = Math.floor(progressEvent.loaded / progressEvent.total * 100);
+        },
         maxContentLength: 500 * 1024 * 1024,
       };
 
-      await api.post('/video/storage', data, config)
-      .catch(err => console.error(err));
+      const response = await api.post('/video/storage', data, config)
+        .then(res => {
+          this.uploadProgress = 0;
+          this.loadVisibility = false;
+          return res
+        })
+        .catch(err => console.error(err));
 
-      alert('ok')
+      router.push(`/video/${response.data._id}`)
     },
     arquivoSelecionado(event) {
       const file = event.target.files[0];
@@ -122,6 +145,22 @@ form {
 .container-dropzone:active {
   background-color: var(--v-grey-lighten4);
 }
+
+.container-dropzone-selected {
+  background-color: var(--v-primary-base);
+  border-color: var(--v-primary-darken1);
+}
+
+.container-dropzone-selected:hover {
+  background-color: var(--v-primary-darken1);
+  border-color: var(--v-primary-darken2);
+}
+
+.container-dropzone-selected:active {
+  background-color: var(--v-accent-base);
+  border-color: var(--v-accent-lighten1);
+}
+
 
 .container-dropzone > input {
   cursor: pointer;
