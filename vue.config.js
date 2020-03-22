@@ -3,6 +3,6 @@ module.exports = {
     "vuetify"
   ],
   devServer: {
-    proxy: process.env.VUE_APP_PROXY,
+    proxy: process.env.VUE_APP_URL_BACKEND,
   }
 }
